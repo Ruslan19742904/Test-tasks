@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/api/notes', function () {
+    return response()->json([
+        ['id' => 1, 'title' => 'Первая'],
+        ['id' => 2, 'title' => 'Вторая'],
+    ]);
+})->middleware('role.access');
